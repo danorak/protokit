@@ -7,6 +7,9 @@ import PropTypes from 'prop-types'
 import { hot } from 'react-hot-loader'
 //
 import Routes from 'react-static-routes'
+import { ThemeProvider } from 'styled-components';
+import theme from './common/theme';
+
 
 import './app.css'
 
@@ -111,18 +114,20 @@ const AnimatedRoutes = getContext({
 ))
 
 const App = () => (
-  <Router>
-    <div>
-      <nav>
-        <Link exact to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
-      </nav>
-      <div className="content">
-        <Routes component={AnimatedRoutes} />
+  <ThemeProvider theme={theme}>
+    <Router>
+      <div>
+        <nav>
+          <Link exact to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/blog">Blog</Link>
+        </nav>
+        <div className="content">
+          <Routes component={AnimatedRoutes} />
+        </div>
       </div>
-    </div>
-  </Router>
+    </Router>
+  </ThemeProvider>
 )
 
 export default hot(module)(App)
